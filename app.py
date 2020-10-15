@@ -4,6 +4,7 @@ import dash_design_kit as ddk
 import dash_core_components as dcc
 import dash_html_components as html
 import textwrap
+import sodapy as socrata
 
 app = dash.Dash(__name__)
 server = app.server  # expose server variable for Procfile
