@@ -7,14 +7,19 @@ import textwrap
 import requests
 import sodapy as Socrata
 import os as os
+import pandas
 
+def get_configuration():
+    name = os.environ.get('DASH_APP_NAME')  
 
-name = os.environ.get('DASH_APP_NAME')  
-print (name)
-url = f'https://staging-bellerophon.herokuapp.com/genericApp/app_configurations/query.json?customer_domain=platform-bellerophon-{name}.genericapp.socrata-qa.com'
+    print (name)
+    url = f'https://staging-bellerophon.herokuapp.com/genericApp/app_configurations/query.json?customer_domain=plotly.tylertech.io%2f{name}'
 
-response = requests.get(url)
-configuration = response.json()['configurations']
+    response = requests.get(url)
+    print (response.json())
+    configuration = response.json()['configurations']
+    return configuration
+
 
 app = dash.Dash(__name__)
 server = app.server  # expose server variable for Procfile
@@ -74,7 +79,7 @@ app.layout = ddk.App([
 
     ddk.Header([
         ddk.Logo(src=app.get_asset_url('logo.png')),
-        ddk.Title(configuration),
+        ddk.Title(get_configuration()),
         menu
     ]),
 
