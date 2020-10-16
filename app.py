@@ -13,7 +13,7 @@ def get_configuration():
     name = os.environ.get('DASH_APP_NAME')  
 
     print (name)
-    url = f'https://staging-bellerophon.herokuapp.com/genericApp/app_configurations/query.json?customer_domain=plotly.tylertech.io%2f{name}'
+    url = f'https://staging-bellerophon.herokuapp.com/genericApp/app_configurations/query.json?customer_domain=plotly.tylerdev.io%2f{name}'
 
     response = requests.get(url)
     print (response.json())
