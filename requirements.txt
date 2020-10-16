@@ -3,3 +3,5 @@ dash-design-kit==1.5.4
 dash==1.14.0
 gunicorn==19.9.0
 pandas==0.25.3
+sodapy
+requests

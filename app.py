@@ -4,6 +4,15 @@ import dash_design_kit as ddk
 import dash_core_components as dcc
 import dash_html_components as html
 import textwrap
+import requests
+import sodapy as Socrata
+
+
+name = "asdf3135"
+url = f'https://staging-bellerophon.herokuapp.com/genericApp/app_configurations/query.json?customer_domain=platform-bellerophon-{name}.genericapp.socrata-qa.com'
+
+response = requests.get(url)
+configuration = response.json()['configurations']
 
 app = dash.Dash(__name__)
 server = app.server  # expose server variable for Procfile
@@ -63,7 +72,7 @@ app.layout = ddk.App([
 
     ddk.Header([
         ddk.Logo(src=app.get_asset_url('logo.png')),
-        ddk.Title('Weekly Report'),
+        ddk.Title(configuration),
         menu
     ]),
 
