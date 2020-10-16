@@ -6,9 +6,11 @@ import dash_html_components as html
 import textwrap
 import requests
 import sodapy as Socrata
+import os as os
 
 
-name = "asdf3135"
+name = os.environ.get('DASH_APP_NAME')  
+print (name)
 url = f'https://staging-bellerophon.herokuapp.com/genericApp/app_configurations/query.json?customer_domain=platform-bellerophon-{name}.genericapp.socrata-qa.com'
 
 response = requests.get(url)
